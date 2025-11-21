@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:34:13 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/21 08:59:57 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/21 09:59:15 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CHECK_ARGS_H
 # define TRUE 1
 # define FALSE -1
-# define SUCCESS TRUE
-# define FAILURE FALSE
+# define SUCCESS 1
+# define FAILURE -1
 # include "Libft/libft.h"
 # include "utils.h"
 

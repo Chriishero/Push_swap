@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:50:46 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/21 09:00:24 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/21 10:10:15 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 int	main(int argc, char **argv)
 {
-	char	*list;
-
 	check_args(argc, argv);
 	return (0);
 }
