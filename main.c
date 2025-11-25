@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:50:46 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/25 08:56:35 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/25 09:55:09 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int main(int argc, char **argv)
 	// curr = b;
 	// for (; curr; curr = curr->next)
 	// 	ft_printf("%d\n", curr->content);
-	char	*list;
-	int		i;
 	t_stack	*stack;
 	t_stack *curr;
 

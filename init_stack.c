@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 07:13:24 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/25 08:56:22 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/25 09:55:22 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static char	**init_tab(char **argv, int argc)
 	char	**tab;
 	char	*elements;
 	char	*tmp;
-	int		j;
 
 	i = 1;
 	while (argv[i] && ft_strnstr(argv[i], "--", 2))
