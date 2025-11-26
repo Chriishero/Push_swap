@@ -6,20 +6,20 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 06:02:04 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/25 08:18:20 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/11/26 08:20:45 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-void	rotate(t_stack **s)
+int	rotate(t_stack **s)
 {
 	t_stack	*curr;
 	t_stack	*first;
 	t_stack	*second;
 
 	if (!s || !*s || !(*s)->next)
-		return ;
+		return (0);
 	curr = *s;
 	first = curr;
 	second = first->next;
@@ -28,24 +28,26 @@ void	rotate(t_stack **s)
 	curr->next = first;
 	first->next = NULL;
 	*s = second;
+	return (1);
 }
 
-void	rotate_ss(t_stack **a, t_stack **b)
+int	rotate_ss(t_stack **a, t_stack **b)
 {
 	if (!a || !*a || !b || !*b)
-		return ;
+		return (0);
 	rotate(a);
 	rotate(b);
+	return (ft_printf("rr\n"), 1);
 }
 
-void	reverse_rotate(t_stack **s)
+int	reverse_rotate(t_stack **s)
 {
 	t_stack	*curr;
 	t_stack	*last_prev;
 	t_stack	*last;
 
 	if (!s || !*s || !(*s)->next)
-		return ;
+		return (0);
 	curr = *s;
 	while (curr->next->next)
 		curr = curr->next;
@@ -54,12 +56,14 @@ void	reverse_rotate(t_stack **s)
 	curr->next = NULL;
 	last->next = *s;
 	*s = last;
+	return (1);
 }
 
-void	reverse_rotate_ss(t_stack **a, t_stack **b)
+int	reverse_rotate_ss(t_stack **a, t_stack **b)
 {
 	if (!a || !*a || !b || !*b)
-		return ;
+		return (0);
 	reverse_rotate(a);
 	reverse_rotate(b);
+	return (ft_printf("rrr\n"), 1);
 }
