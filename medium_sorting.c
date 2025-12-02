@@ -6,26 +6,41 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:51:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/02 23:11:30 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/03 00:25:08 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_max_index(int *tabs)
+int	find_max_value(t_stack *s)
 {
 	int	max;
-	int	i;
 
 	max = INT_MIN;
-	i = 0;
-	while (tabs[i])
+	while (s)
 	{
-		if (max < tabs[i])
-			max = tabs[i];
-		i++;
+		if (s->content > max)
+			max = s->content;
+		s = s->next;
 	}
 	return (max);
+}
+
+static t_monitoring	chunks_sorting(t_stack **a, t_stack **b)
+{
+	t_monitoring	m;
+	int				max_idx;
+	
+	m = (t_monitoring){0};
+	max_idx = stack_size(*b);
+	while (stack_size(*b) >= 0)
+	{
+		while ((*b)->content != max_idx)
+			m.n_rb += rotate(b);
+		m.n_pa += push(b, a);
+		max_idx--;
+	}
+	return (m);
 }
 
 static int	*value_to_index(t_stack *a)
@@ -97,14 +112,11 @@ t_monitoring medium_sorting(t_stack **a, t_stack **b) // chunks sorting
 		}
 		if ((*a)->content / n_chunks == curr_chunk)
 		{
-			m.n_pb = push(a, b);
+			m.n_pb += push(a, b);
 			chunk_index++;
 		}
 		else
-			m.n_ra = rotate(a);
+			m.n_ra += rotate(a);
 	}
-	while (stack_size(*b) > 0)
-	{
-		
-	}
+	return (m);
 }
