@@ -6,14 +6,13 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:09:41 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/26 08:22:32 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/02 07:08:50 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 # include "Libft/libft.h"
-# include "utils.h"
 
 typedef struct s_stack
 {

@@ -6,13 +6,12 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:52:37 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/26 07:30:47 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/02 07:04:45 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "stack.h"
 # include "utils.h"
 # include "benchmark.h"
 

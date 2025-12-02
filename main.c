@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:50:46 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/26 08:16:39 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/02 07:14:41 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,27 @@ t_stack *new_stack(int start, int len)
 
 int main(int argc, char **argv)
 {
-    t_stack *a = NULL;
-    t_stack *b = NULL;
-	t_stack *curr;
-	
-    a = new_stack(0, 1);
-	b = new_stack(10, 6);
-    rotate_ss(&a, &b);
-	curr = b;
-	for (; curr; curr = curr->next)
-		ft_printf("%d\n", curr->content);
-	// t_stack	*stack;
+    // t_stack *a = NULL;
+    // t_stack *b = NULL;
 	// t_stack *curr;
-
-	// check_args(argc, argv);
-	// stack = init_stack(argv, argc);
-	// for (curr = stack; curr; curr = curr->next)
+	
+    // a = new_stack(0, 1);
+	// b = new_stack(10, 6);
+    // rotate_ss(&a, &b);
+	// curr = b;
+	// for (; curr; curr = curr->next)
 	// 	ft_printf("%d\n", curr->content);
+	t_stack	*a;
+	t_stack	*b;
+	t_stack *curr;
+
+	check_args(argc, argv);
+	a = init_stack(argv, argc);
+	b = NULL;
+	for (curr = a; curr; curr = curr->next)
+		ft_printf("%d\n", curr->content);
+	push_swap(&a, &b, "--simple", 1);
+	for (curr = a; curr; curr = curr->next)
+		ft_printf("%d\n", curr->content);
     return (0);
 }

@@ -4,7 +4,8 @@ SRCS = 	main.c \
 		check_args.c \
 		utils.c \
 		init_stack.c \
-		swap_push_stack.c \
+		swap_stack.c \
+		push_stack.c \
 		rotate_stack.c \
 		push_swap.c
 OBJS = $(SRCS:.c=.o)

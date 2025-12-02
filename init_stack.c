@@ -6,34 +6,35 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 07:13:24 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/25 09:55:22 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/02 07:08:57 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "utils.h"
 
-static int	count_element(char *list)
-{
-	int	i;
-	int	count;
-	int	iselement;
+// static int	count_element(char *list)
+// {
+// 	int	i;
+// 	int	count;
+// 	int	iselement;
 
-	i = 0;
-	count = 0;
-	iselement = 0;
-	while (list[i])
-	{
-		if (list[i] == ' ' && iselement == 1)
-			iselement = 0;
-		else if (list[i] != ' ' && iselement == 0)
-		{
-			iselement = 1;
-			count++;
-		}
-		i++;
-	}
-	return (count);
-}
+// 	i = 0;
+// 	count = 0;
+// 	iselement = 0;
+// 	while (list[i])
+// 	{
+// 		if (list[i] == ' ' && iselement == 1)
+// 			iselement = 0;
+// 		else if (list[i] != ' ' && iselement == 0)
+// 		{
+// 			iselement = 1;
+// 			count++;
+// 		}
+// 		i++;
+// 	}
+// 	return (count);
+// }
 
 static char	**init_tab(char **argv, int argc)
 {
