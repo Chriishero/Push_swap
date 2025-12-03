@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:51:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 00:25:08 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/03 09:57:15 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static int	*value_to_index(t_stack *a)
 		curr = curr->next;
 		index++;
     }
-	tabs[index] = NULL;
 	return (tabs);
 }
 
@@ -89,15 +88,13 @@ void	replace_content_by_index(t_stack **a, int *indexs)
 	}
 }
 
-t_monitoring medium_sorting(t_stack **a, t_stack **b) // chunks sorting
+t_monitoring medium_sorting(t_stack **a, t_stack **b, t_monitoring m) // chunks sorting
 {
-	t_monitoring	m;
 	int				*indexs;
 	int				n_chunks;
 	int				curr_chunk;
 	int				chunk_index;
 
-	m = (t_monitoring){0};
 	indexs = value_to_index(*a);
 	replace_content_by_index(a, indexs);
 	n_chunks = ft_sqrt(stack_size(*a));
@@ -118,5 +115,6 @@ t_monitoring medium_sorting(t_stack **a, t_stack **b) // chunks sorting
 		else
 			m.n_ra += rotate(a);
 	}
+	m = chunks_sorting(a, b);
 	return (m);
 }

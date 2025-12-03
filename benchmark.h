@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 07:12:12 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 00:24:54 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/03 09:59:32 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 typedef struct s_monitoring
 {
+	int	disorder;
 	int	n_sa;
 	int	n_sb;
 	int	n_ss;
@@ -29,6 +30,8 @@ typedef struct s_monitoring
 	int	n_rrr;
 }		t_monitoring;
 
-t_monitoring	concatenate_monitoring(t_monitoring m1, t_monitoring m2);
+t_monitoring	add_monitoring(t_monitoring m1, t_monitoring m2);
+int				compute_disorder(t_stack *s);
+void			print_benchmark(t_monitoring m, char *strategy);
 
 #endif

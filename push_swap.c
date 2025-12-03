@@ -6,25 +6,68 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:59:55 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/02 23:10:57 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/03 10:02:21 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+char	*get_strategy(char **argv, int argc)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_strncmp(argv[i], "--", 2) == 0)
+			if (ft_strncmp(argv[i], "--benchmark", 10) != 0)
+				return (argv[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+int	isbenchmark_flag(char **argv, int argc)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_strncmp(argv[i], "--benchmark", 10) == 0)
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
+}
+
+t_monitoring	adaptive_sorting(t_stack **a, t_stack **b, t_monitoring m)
+{
+	if (m.disorder < 0.2)
+		m = simple_sorting(a, b, m);
+	else if (m.disorder >= 0.2 && m.disorder < 0.5)
+		m = medium_sorting(a, b, m);
+	else if (m.disorder >= 0.5)
+		m = complex_sorting(a, b, m);
+	return (m);
+}
+
 void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 {
 	t_monitoring	m;
 
-	if (ft_strncmp(strategy, "--simple", 10) == 0)
-		m = simple_sorting(a, b);
+	m = (t_monitoring){0};
+	m.disorder = compute_disorder(*a);
+	if (!strategy || ft_strncmp(strategy, "--adaptive", 13) == 0)
+		m = adaptive_sorting(a, b, m);
+	else if (ft_strncmp(strategy, "--simple", 10) == 0)
+		m = simple_sorting(a, b, m);
 	else if (ft_strncmp(strategy, "--medium", 9) == 0)
-		m = medium_sorting(a, b);
-	// else if (ft_strncmp(strategy, "--complex", 9))
-	// 	m = complex_sorting(a, b);
-	// else if (!strategy || ft_strncmp(strategy, "--adaptive", 13))
-	// 	m = adaptive_sorting(a, b);
+		m = medium_sorting(a, b, m);
+	else if (ft_strncmp(strategy, "--complex", 9) == 0)
+		m = complex_sorting(a, b, m);
 	if (isbenchmark == TRUE)
-		ft_printf("ra: %d\nrb: %d\nrra: %d\nrrb: %d\npa: %d\npb: %d\n",
-			m.n_ra, m.n_rb, m.n_rra, m.n_rrb, m.n_pa, m.n_pb);
+	{
+		print_benchmark(m, strategy);
+	}
 }

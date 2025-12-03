@@ -6,56 +6,81 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:36:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/25 07:12:34 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/03 09:43:51 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_args.h"
 
+int	check_number(char *nbr)
+{
+	int	i;
+
+	if (ft_atol(nbr) > INT_MAX || ft_atol(nbr) < INT_MIN)
+		return (FAILURE);
+	i = 0;
+	while (++i >= 0 && nbr[i])
+	{
+		if (((nbr[i] == '-' || nbr[i] == '+') && !ft_isdigit(nbr[i + 1]))
+			|| (nbr[i] != '-' && nbr[i] != '+' && !ft_isdigit(nbr[i])))
+			return (FAILURE);
+		i++;
+	}
+	return (SUCCESS);
+}
+
 int	check_list(char *list)
 {
 	char	**elements;
 	int		i;
-	int		j;
+	int		k;
 
-	if (!list)
-		return (FAILURE);
 	elements = ft_split(list, ' ');
 	if (!elements)
 		return (FAILURE);
 	i = 0;
 	while (elements[i])
 	{
-		j = 0;
-		while (elements[i][j])
+		k = i + 1;
+		while (elements[k])
 		{
-			if (!ft_isdigit(elements[i][j]))
+			if (ft_atoi(elements[i]) == ft_atoi(elements[k]))
 				return (free_after_split(elements), FAILURE);
-			j++;
+			k++;
 		}
+		if (check_number(elements[i]) == FAILURE)
+			return (free_after_split(elements), FAILURE);
 		i++;
 	}
-	free_after_split(elements);
-	return (SUCCESS);
+	return (free_after_split(elements), SUCCESS);
 }
 
 int	check_modes(int argc, char **argv)
 {
 	int	i;
+	int	isbench;
+	int	isstrategy;
 
-	i = 1;
-	while (i < argc)
+	isbench = FALSE;
+	isstrategy = FALSE;
+	i = 0;
+	while (++i < argc)
 	{
-		if (ft_strncmp(argv[i], "--simple", 9) == 0)
-			return (TRUE);
-		else if (ft_strncmp(argv[i], "--medium", 9) == 0)
-			return (TRUE);
-		else if (ft_strncmp(argv[i], "--complexe", 10) == 0)
-			return (TRUE);
-		else if (ft_strncmp(argv[i], "--bench", 8) == 0)
-			return (TRUE);
-		i++;
+		if (ft_strncmp(argv[i], "--simple", 9) == 0 && isstrategy == FALSE)
+			isstrategy = TRUE;
+		if (ft_strncmp(argv[i], "--medium", 9) == 0 && isstrategy == FALSE)
+			isstrategy = TRUE;
+		if (ft_strncmp(argv[i], "--complex", 10) == 0 && isstrategy == FALSE)
+			isstrategy = TRUE;
+		if (ft_strncmp(argv[i], "--adaptive", 10) == 0 && isstrategy == FALSE)
+			isstrategy = TRUE;
+		else if (ft_strncmp(argv[i], "--bench", 8) == 0 && isbench == FALSE)
+			isbench = TRUE;
+		else if (ft_strncmp(argv[i], "--", 2) == 0)
+			return (FAILURE);
 	}
+	if (isstrategy || isbench)
+		return (TRUE);
 	return (FALSE);
 }
 
@@ -74,9 +99,9 @@ void	check_args(int argc, char **argv)
 	list = NULL;
 	if (!argv || !*argv)
 		error();
-	is_mode = FALSE;
-	if (check_modes(argc, argv) == TRUE)
-		is_mode = TRUE;
+	is_mode = check_modes(argc, argv);
+	if (is_mode == FAILURE)
+		error();
 	i = 1;
 	while (i < argc)
 	{

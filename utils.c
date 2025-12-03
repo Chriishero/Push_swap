@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 08:57:36 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/02 22:57:57 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/03 09:02:33 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,36 @@ int	stack_size(t_stack *s)
 int	ft_sqrt(int n)
 {
 	int	res;
+
 	if (n <= 0)
 		return (0);
 	res = 0;
 	while (res * res < n)
 		res++;
 	return (res);
+}
+
+long	ft_atol(const char *nptr)
+{
+	int		i;
+	int		sign;
+	long	value;
+
+	i = 0;
+	while (nptr[i] <= ' ')
+		i++;
+	sign = 1;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	value = 0;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		value = value * 10 + nptr[i] - '0';
+		i++;
+	}
+	return (value * sign);
 }
