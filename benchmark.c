@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 09:17:26 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 10:02:41 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/08 23:17:38 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,42 @@ int	compute_disorder(t_stack *s)
 		}
 		curr = curr->next;
 	}
-	return (mistakes / total_pairs);
+	return (mistakes * 10000 / total_pairs);
+}
+
+int	compute_total_ops(t_monitoring m)
+{
+	int	total_ops;
+
+	total_ops = 0;
+	total_ops += m.n_pa;
+	total_ops += m.n_pa;
+	total_ops += m.n_ra;
+	total_ops += m.n_rb;
+	total_ops += m.n_rr;
+	total_ops += m.n_rra;
+	total_ops += m.n_rrb;
+	total_ops += m.n_rrr;
+	total_ops += m.n_sa;
+	total_ops += m.n_sb;
+	total_ops += m.n_ss;
+	return (total_ops);
 }
 
 void	print_benchmark(t_monitoring m, char *strategy)
-{
-	ft_printf("[bench] disorder:	%d", m.disorder);
+{	
+	ft_printf("[bench] disorder:  %d.%d%%\n", m.disorder / 100, m.disorder % 100);
 	if (!strategy || ft_strncmp(strategy, "--adaptive", 13) == 0)
-		ft_printf("[bench] strategy:	Adaptive / O(n^2)");
+		ft_printf("[bench] strategy:  Adaptive / O(n^2)\n");
 	else if (ft_strncmp(strategy, "--simple", 10) == 0)
-		ft_printf("[bench] strategy:	Simple / O(n^2)");
+		ft_printf("[bench] strategy:  Simple / O(n^2)\n");
 	else if (ft_strncmp(strategy, "--medium", 9) == 0)
-		ft_printf("[bench] strategy:	Medium / O(nsqrt(n))");
+		ft_printf("[bench] strategy:  Medium / O(nsqrt(n))\n");
 	else if (ft_strncmp(strategy, "--complex", 9) == 0)
-		ft_printf("[bench] strategy:	Complex / O(nlog(n))");
+		ft_printf("[bench] strategy:  Complex / O(nlog(n))\n");
+	ft_printf("[bench] total_ops:  %d\n", compute_total_ops(m));
+	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
+		m.n_sa, m.n_sb, m.n_ss, m.n_pa, m.n_pb);
+	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d  rrb:  %d  rrr:  %d\n",
+		m.n_ra, m.n_rb, m.n_rr, m.n_rra, m.n_rrb, m.n_rrr);
 }

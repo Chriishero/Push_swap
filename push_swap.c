@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:59:55 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 10:02:21 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/08 23:11:47 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_strategy(char **argv, int argc)
 	while (i < argc)
 	{
 		if (ft_strncmp(argv[i], "--", 2) == 0)
-			if (ft_strncmp(argv[i], "--benchmark", 10) != 0)
+			if (ft_strncmp(argv[i], "--bench", 10) != 0)
 				return (argv[i]);
 		i++;
 	}
@@ -34,7 +34,7 @@ int	isbenchmark_flag(char **argv, int argc)
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_strncmp(argv[i], "--benchmark", 10) == 0)
+		if (ft_strncmp(argv[i], "--bench", 10) == 0)
 			return (TRUE);
 		i++;
 	}
@@ -67,7 +67,5 @@ void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 	else if (ft_strncmp(strategy, "--complex", 9) == 0)
 		m = complex_sorting(a, b, m);
 	if (isbenchmark == TRUE)
-	{
 		print_benchmark(m, strategy);
-	}
 }

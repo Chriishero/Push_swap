@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 07:12:12 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 09:59:32 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/08 23:00:42 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_monitoring
 
 t_monitoring	add_monitoring(t_monitoring m1, t_monitoring m2);
 int				compute_disorder(t_stack *s);
+int				compute_total_ops(t_monitoring m);
 void			print_benchmark(t_monitoring m, char *strategy);
 
 #endif
