@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:52:37 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 09:54:04 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/08 23:39:53 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 void			push_swap(t_stack **a, t_stack **b,
 					char *strategy, int isbenchmark);
 char			*get_strategy(char **argv, int argc);
+char			*get_time_order(char *strategy, int disorder);
 int				isbenchmark_flag(char **argv, int argc);
 t_monitoring	simple_sorting(t_stack **a, t_stack **b, t_monitoring m);
 t_monitoring	medium_sorting(t_stack **a, t_stack **b, t_monitoring m);

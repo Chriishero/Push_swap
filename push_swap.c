@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:59:55 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/08 23:11:47 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/08 23:47:41 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ char	*get_strategy(char **argv, int argc)
 	return (NULL);
 }
 
+char	*get_time_order(char *strategy, int disorder)
+{
+	if (ft_strncmp(strategy, "--simple", 10) == 0
+		|| (ft_strncmp(strategy, "--adaptive", 10) == 0 && disorder < 0.2))
+		return (ft_strdup("O(n²)"));
+	else if (ft_strncmp(strategy, "--medium", 10) == 0
+		|| (ft_strncmp(strategy, "--adaptive", 10) == 0 && disorder >= 0.2
+			&& disorder < 0.5))
+		return (ft_strdup("O(n√n)"));
+	else if (ft_strncmp(strategy, "--complex", 10) == 0
+		|| (ft_strncmp(strategy, "--adaptive", 10) == 0 && disorder >= 0.5))
+		return (ft_strdup("O(nlog(n))"));
+	return (NULL);
+}
+
 int	isbenchmark_flag(char **argv, int argc)
 {
 	int	i;
@@ -43,11 +58,11 @@ int	isbenchmark_flag(char **argv, int argc)
 
 t_monitoring	adaptive_sorting(t_stack **a, t_stack **b, t_monitoring m)
 {
-	if (m.disorder < 0.2)
+	if (m.disorder < 0.2 * 10000)
 		m = simple_sorting(a, b, m);
-	else if (m.disorder >= 0.2 && m.disorder < 0.5)
+	else if (m.disorder >= 0.2 * 10000 && m.disorder < 0.5 * 10000)
 		m = medium_sorting(a, b, m);
-	else if (m.disorder >= 0.5)
+	else if (m.disorder >= 0.5 * 10000)
 		m = complex_sorting(a, b, m);
 	return (m);
 }
@@ -58,6 +73,9 @@ void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 
 	m = (t_monitoring){0};
 	m.disorder = compute_disorder(*a);
+	m.strategy = toupper_first_letter(ft_substr(strategy, 2,
+				ft_strlen(strategy) - 2));
+	m.time_order = get_time_order(strategy, m.disorder / 10000);
 	if (!strategy || ft_strncmp(strategy, "--adaptive", 13) == 0)
 		m = adaptive_sorting(a, b, m);
 	else if (ft_strncmp(strategy, "--simple", 10) == 0)
@@ -67,5 +85,7 @@ void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 	else if (ft_strncmp(strategy, "--complex", 9) == 0)
 		m = complex_sorting(a, b, m);
 	if (isbenchmark == TRUE)
-		print_benchmark(m, strategy);
+		print_benchmark(m);
+	free(m.strategy);
+	free(m.time_order);
 }

@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 08:54:49 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 10:02:49 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/08 23:26:50 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	free_after_split(char **tab);
 int		stack_size(t_stack *s);
 int		ft_sqrt(int n);
 long	ft_atol(const char *nptr);
+char	*toupper_first_letter(char *str);
 
 #endif

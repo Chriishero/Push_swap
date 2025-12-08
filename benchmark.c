@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 09:17:26 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/08 23:17:38 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/08 23:33:32 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,16 @@ int	compute_total_ops(t_monitoring m)
 	return (total_ops);
 }
 
-void	print_benchmark(t_monitoring m, char *strategy)
-{	
-	ft_printf("[bench] disorder:  %d.%d%%\n", m.disorder / 100, m.disorder % 100);
-	if (!strategy || ft_strncmp(strategy, "--adaptive", 13) == 0)
-		ft_printf("[bench] strategy:  Adaptive / O(n^2)\n");
-	else if (ft_strncmp(strategy, "--simple", 10) == 0)
-		ft_printf("[bench] strategy:  Simple / O(n^2)\n");
-	else if (ft_strncmp(strategy, "--medium", 9) == 0)
-		ft_printf("[bench] strategy:  Medium / O(nsqrt(n))\n");
-	else if (ft_strncmp(strategy, "--complex", 9) == 0)
-		ft_printf("[bench] strategy:  Complex / O(nlog(n))\n");
+void	print_benchmark(t_monitoring m)
+{
+	ft_printf("[bench] disorder:  %d.%d%%\n", m.disorder / 100,
+		m.disorder % 100);
+	ft_printf("[bench] strategy:  %s / %s\n", m.strategy, m.time_order);
 	ft_printf("[bench] total_ops:  %d\n", compute_total_ops(m));
 	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
 		m.n_sa, m.n_sb, m.n_ss, m.n_pa, m.n_pb);
-	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d  rrb:  %d  rrr:  %d\n",
-		m.n_ra, m.n_rb, m.n_rr, m.n_rra, m.n_rrb, m.n_rrr);
+	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d",
+		m.n_ra, m.n_rb, m.n_rr);
+	ft_printf("rra:  %d  rrb:  %d  rrr:  %d\n",
+		m.n_rra, m.n_rrb, m.n_rrr);
 }

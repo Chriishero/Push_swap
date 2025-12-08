@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 08:57:36 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 09:02:33 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/08 23:27:43 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,20 @@ long	ft_atol(const char *nptr)
 		i++;
 	}
 	return (value * sign);
+}
+
+char	*toupper_first_letter(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] -= 32;
+			break ;
+		}
+	}
+	return (str);
 }
