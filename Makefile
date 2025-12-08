@@ -7,7 +7,11 @@ SRCS = 	main.c \
 		swap_stack.c \
 		push_stack.c \
 		rotate_stack.c \
-		push_swap.c
+		push_swap.c \
+		benchmark.c \
+		medium_sorting.c \
+		simple_sorting.c \
+		complex_sorting.c
 OBJS = $(SRCS:.c=.o)
 NAME = Push_swap
 LIBFT = ./Libft/libft.a
@@ -18,8 +22,7 @@ $(LIBFT):
 	$(MAKE) -C ./Libft/
 
 $(NAME): $(OBJS)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./Libft -lft
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@ -I Libft/
