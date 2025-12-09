@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 08:57:36 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/08 23:27:43 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/09 07:39:05 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ char	*toupper_first_letter(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (str[i])
 	{
@@ -87,6 +89,7 @@ char	*toupper_first_letter(char *str)
 			str[i] -= 32;
 			break ;
 		}
+		i++;
 	}
 	return (str);
 }

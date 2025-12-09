@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:49:54 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/08 23:55:12 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/09 08:06:07 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ t_monitoring	simple_sorting(t_stack **a, t_stack **b, t_monitoring m)
 			break ;
 		if (idx <= stack_size(*a) / 2)
 			while (idx-- > 0)
-				m.n_ra += rotate(a);
+				m.n_ra += do_r(a, 'a');
 		else
 		{
 			moves = stack_size(*a) - idx;
 			while (moves-- > 0)
-				m.n_rra += reverse_rotate(a);
+				m.n_rra += do_rr(a, 'a');
 		}
-		m.n_pb += push(a, b);
-		m.n_rb += rotate(b);
+		m.n_pb += do_p(a, b, 'b');
+		m.n_rb += do_r(b, 'b');
 	}
 	while (*b)
-		m.n_pa += push(b, a);
+		m.n_pa += do_p(b, a, 'a');
 	return (m);
 }

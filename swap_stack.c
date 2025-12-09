@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 22:15:59 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/27 08:51:56 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/09 08:00:17 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,11 @@ int	swap_ss(t_stack **a, t_stack **b)
 	swap(a);
 	swap(b);
 	return (ft_printf("ss\n"), 1);
+}
+
+int	do_s(t_stack **s, char c)
+{
+	if (c == 'a' || c == 'b')
+		ft_printf("s%c\n", c);
+	return (swap(s));
 }

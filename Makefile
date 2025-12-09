@@ -7,6 +7,7 @@ SRCS = 	main.c \
 		swap_stack.c \
 		push_stack.c \
 		rotate_stack.c \
+		reverse_rotate_stack.c \
 		push_swap.c \
 		benchmark.c \
 		medium_sorting.c \

@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 06:41:58 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/03 08:42:58 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/09 07:59:43 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,11 @@ int	push(t_stack **s1, t_stack **s2)
 	*s1 = second;
 	*s2 = first;
 	return (1);
+}
+
+int	do_p(t_stack **a, t_stack **b, char c)
+{
+	if (c == 'a' || c == 'b')
+		ft_printf("p%c\n", c);
+	return (push(a, b));
 }

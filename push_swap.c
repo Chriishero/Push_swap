@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:59:55 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/08 23:47:41 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/09 07:47:54 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ char	*get_strategy(char **argv, int argc)
 
 char	*get_time_order(char *strategy, int disorder)
 {
-	if (ft_strncmp(strategy, "--simple", 10) == 0
-		|| (ft_strncmp(strategy, "--adaptive", 10) == 0 && disorder < 0.2))
+	if (ft_strncmp(strategy, "Simple", 10) == 0
+		|| (ft_strncmp(strategy, "Adaptive", 10) == 0 && disorder < 0.2))
 		return (ft_strdup("O(n²)"));
-	else if (ft_strncmp(strategy, "--medium", 10) == 0
-		|| (ft_strncmp(strategy, "--adaptive", 10) == 0 && disorder >= 0.2
+	else if (ft_strncmp(strategy, "Medium", 10) == 0
+		|| (ft_strncmp(strategy, "Adaptive", 10) == 0 && disorder >= 0.2
 			&& disorder < 0.5))
 		return (ft_strdup("O(n√n)"));
-	else if (ft_strncmp(strategy, "--complex", 10) == 0
-		|| (ft_strncmp(strategy, "--adaptive", 10) == 0 && disorder >= 0.5))
+	else if (ft_strncmp(strategy, "Complex", 10) == 0
+		|| (ft_strncmp(strategy, "Adaptive", 10) == 0 && disorder >= 0.5))
 		return (ft_strdup("O(nlog(n))"));
 	return (NULL);
 }
@@ -73,9 +73,12 @@ void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 
 	m = (t_monitoring){0};
 	m.disorder = compute_disorder(*a);
-	m.strategy = toupper_first_letter(ft_substr(strategy, 2,
-				ft_strlen(strategy) - 2));
-	m.time_order = get_time_order(strategy, m.disorder / 10000);
+	if (!strategy)
+		m.strategy = ft_strdup("Adaptive");
+	else
+		m.strategy = toupper_first_letter(ft_substr(strategy, 2,
+					ft_strlen(strategy) - 2));
+	m.time_order = get_time_order(m.strategy, m.disorder / 10000);
 	if (!strategy || ft_strncmp(strategy, "--adaptive", 13) == 0)
 		m = adaptive_sorting(a, b, m);
 	else if (ft_strncmp(strategy, "--simple", 10) == 0)
