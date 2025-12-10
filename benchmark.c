@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 09:17:26 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/08 23:33:32 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/10 22:50:31 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void	print_benchmark(t_monitoring m)
 		m.n_sa, m.n_sb, m.n_ss, m.n_pa, m.n_pb);
 	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d",
 		m.n_ra, m.n_rb, m.n_rr);
-	ft_printf("rra:  %d  rrb:  %d  rrr:  %d\n",
+	ft_printf("  rra:  %d  rrb:  %d  rrr:  %d\n",
 		m.n_rra, m.n_rrb, m.n_rrr);
 }

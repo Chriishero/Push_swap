@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:34:13 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/08 22:51:25 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/10 23:40:18 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	error(void);
 int		check_modes(int argc, char **argv);
 int		check_list(char *list);
 int		check_number(char *nbr);
+int		check_duplicate(char **tab);
 
 #endif

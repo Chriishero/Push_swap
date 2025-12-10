@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 08:54:49 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/08 23:26:50 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/10 23:40:28 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int		stack_size(t_stack *s);
 int		ft_sqrt(int n);
 long	ft_atol(const char *nptr);
 char	*toupper_first_letter(char *str);
+int		check_duplicates_btw_tabs(char **tab1, char **tab2);
 
 #endif

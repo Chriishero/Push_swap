@@ -1,18 +1,11 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = 	main.c \
-		check_args.c \
-		utils.c \
-		init_stack.c \
-		swap_stack.c \
-		push_stack.c \
-		rotate_stack.c \
-		reverse_rotate_stack.c \
-		push_swap.c \
+SRCS = 	main.c utils.c \
+		check_args.c check_args2.c \
+		init_stack.c swap_stack.c push_stack.c rotate_stack.c reverse_rotate_stack.c \
 		benchmark.c \
-		medium_sorting.c \
-		simple_sorting.c \
-		complex_sorting.c
+		medium_sorting.c simple_sorting.c complex_sorting.c \
+		push_swap.c
 OBJS = $(SRCS:.c=.o)
 NAME = Push_swap
 LIBFT = ./Libft/libft.a
