@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 07:13:24 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/02 07:08:57 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 00:09:26 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,27 @@
 // 	return (count);
 // }
 
+static char	*join_args(char *elements, const char *arg)
+{
+	char	*tmp;
+	char	*tmp2;
+	
+	tmp = ft_strjoin(elements, arg);
+	if (!tmp)
+		return (free(elements), NULL);
+	free(elements);
+	tmp2 = ft_strjoin(tmp, " ");
+	if (!tmp2)
+		return (free(tmp), NULL);
+	free(tmp);
+	return (tmp2);	
+}
+
 static char	**init_tab(char **argv, int argc)
 {
 	int		i;
 	char	**tab;
 	char	*elements;
-	char	*tmp;
 
 	i = 1;
 	while (argv[i] && ft_strnstr(argv[i], "--", 2))
@@ -49,15 +64,13 @@ static char	**init_tab(char **argv, int argc)
 	elements = ft_strdup("");
 	while (i < argc)
 	{
-		tmp = ft_strjoin(elements, argv[i]);
-		free(elements);
-		elements = tmp;
-		tmp = ft_strjoin(elements, " ");
-		free(elements);
-		elements = tmp;
+		elements = join_args(elements, argv[i]);
+		if (!elements)
+			return (NULL);
 		i++;
 	}
 	tab = ft_split(elements, ' ');
+	free(elements);
 	if (!tab)
 		return (free_after_split(tab), NULL);
 	return (tab);
@@ -80,7 +93,7 @@ t_stack	*init_stack(char **argv, int argc)
 	{
 		new = malloc(sizeof(t_stack));
 		if (!new)
-			return (NULL);
+			return (free_after_split(tab), NULL);
 		new->content = ft_atoi(tab[i]);
 		new->next = NULL;
 		if (!s)
@@ -90,4 +103,16 @@ t_stack	*init_stack(char **argv, int argc)
 		curr = new;
 	}
 	return (free_after_split(tab), s);
+}
+
+void	free_stack(t_stack *s)
+{
+	t_stack *dummy;
+
+	while (s)
+	{
+		dummy = s->next;
+		free(s);
+		s = dummy;
+	}
 }

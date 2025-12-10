@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:09:41 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/09 07:59:31 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 00:09:28 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack
 }					t_stack;
 
 t_stack	*init_stack(char **argv, int argc);
+void	free_stack(t_stack *s);
 // do operation
 int		swap(t_stack **s);
 int		swap_ss(t_stack **a, t_stack **b);

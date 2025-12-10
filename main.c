@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:50:46 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/10 23:25:55 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 00:09:48 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	a = init_stack(argv, argc);
 	b = NULL;
 	push_swap(&a, &b, get_strategy(argv, argc), isbenchmark_flag(argv, argc));
-	for (; a; a = a->next)
-		ft_printf("%d", a->content);
+	free_stack(a);
 	return (0);
 }

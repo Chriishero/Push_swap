@@ -6,13 +6,13 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 22:18:13 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/10 23:40:29 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/10 23:42:44 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "check_args.h"
 
-int	check_duplicates_btw_tabs(char **tab1, char **tab2)
+static int	check_duplicates_btw_tabs(char **tab1, char **tab2)
 {
 	if (!tab1 || !tab2)
 		return (FAILURE);
