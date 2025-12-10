@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:09:41 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/11 00:09:28 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 00:11:09 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_stack
 
 t_stack	*init_stack(char **argv, int argc);
 void	free_stack(t_stack *s);
-// do operation
+// do operations
 int		swap(t_stack **s);
 int		swap_ss(t_stack **a, t_stack **b);
 int		push(t_stack **s1, t_stack **s2);
@@ -31,7 +31,7 @@ int		rotate(t_stack **s);
 int		rotate_ss(t_stack **a, t_stack **b);
 int		reverse_rotate(t_stack **s);
 int		reverse_rotate_ss(t_stack **a, t_stack **b);
-// handle operation (do and print)
+// handle operations (do and print)
 int		do_s(t_stack **s, char c);
 int		do_p(t_stack **a, t_stack **b, char c);
 int		do_r(t_stack **s, char c);

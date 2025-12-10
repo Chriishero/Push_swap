@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:36:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/10 23:11:55 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 00:19:06 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ int	check_number(char *nbr)
 
 	if (ft_atol(nbr) > INT_MAX || ft_atol(nbr) < INT_MIN)
 		return (FAILURE);
-	i = -1;
-	while (++i >= 0 && i < ft_strlen(nbr))
+	i = 0;
+	if (nbr[i] == '-' || nbr[i] == '+')
 	{
-		if (nbr[i] == '-' || nbr[i] == '+')
-		{
-			if (!ft_isdigit(nbr[i + 1]))
-				return (FAILURE);
-		}
-		else if (nbr[i] != '-' && nbr[i] != '+' && !ft_isdigit(nbr[i]))
+		if (!ft_isdigit(nbr[i + 1]))
+			return (FAILURE);
+		i++;
+	}
+	while (i < ft_strlen(nbr))
+	{
+		if (!ft_isdigit(nbr[i]))
 			return (FAILURE);
 		i++;
 	}

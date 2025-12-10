@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:59:55 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/10 23:11:32 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 00:13:34 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 		m.strategy = toupper_first_letter(ft_substr(strategy, 2,
 					ft_strlen(strategy) - 2));
 	m.time_order = get_time_order(m.strategy, m.disorder);
-	ft_printf("disorder :: %d", m.disorder / 100);
+	ft_printf("disorder grrrr : %d", m.disorder / 100);
 	if (m.disorder > 0)
 	{
 		if (!strategy || ft_strncmp(strategy, "--adaptive", 13) == 0)
