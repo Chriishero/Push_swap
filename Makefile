@@ -7,7 +7,7 @@ SRCS = 	main.c utils.c \
 		medium_sorting.c simple_sorting.c complex_sorting.c \
 		push_swap.c
 OBJS = $(SRCS:.c=.o)
-NAME = Push_swap
+NAME = push_swap
 LIBFT = ./Libft/libft.a
 
 all: $(LIBFT) $(NAME)

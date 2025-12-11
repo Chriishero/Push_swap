@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:49:54 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/09 08:06:28 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 09:12:59 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,22 @@ static int	find_max_index(t_stack *a)
 // selection sorting
 t_monitoring	simple_sorting(t_stack **a, t_stack **b, t_monitoring m)
 {
+	int				size;
 	int				idx;
 	int				moves;
 
 	while (*a)
 	{
+		size = stack_size(*a);
 		idx = find_max_index(*a);
 		if (idx == FAILURE)
 			break ;
-		if (idx <= stack_size(*a) / 2)
+		if (idx <= size / 2)
 			while (idx-- > 0)
 				m.n_ra += do_r(a, 'a');
 		else
 		{
-			moves = stack_size(*a) - idx;
+			moves = size - idx;
 			while (moves-- > 0)
 				m.n_rra += do_rr(a, 'a');
 		}
