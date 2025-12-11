@@ -6,35 +6,11 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:49:54 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/11 09:19:05 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 10:27:43 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	find_min_index(t_stack *a)
-{
-	int	i;
-	int	min_idx;
-	int	min;
-
-	if (!a)
-		return (FAILURE);
-	i = 0;
-	min_idx = INT_MAX;
-	min = a->content;
-	while (a)
-	{
-		if (a->content < min)
-		{
-			min = a->content;
-			min_idx = i;
-		}
-		a = a->next;
-		i++;
-	}
-	return (min_idx);
-}
 
 // insertion sorting
 t_monitoring	simple_sorting(t_stack **a, t_stack **b, t_monitoring m)
