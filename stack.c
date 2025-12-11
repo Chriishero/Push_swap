@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 07:13:24 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/11 00:09:26 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 01:09:58 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*join_args(char *elements, const char *arg)
 {
 	char	*tmp;
 	char	*tmp2;
-	
+
 	tmp = ft_strjoin(elements, arg);
 	if (!tmp)
 		return (free(elements), NULL);
@@ -49,7 +49,7 @@ static char	*join_args(char *elements, const char *arg)
 	if (!tmp2)
 		return (free(tmp), NULL);
 	free(tmp);
-	return (tmp2);	
+	return (tmp2);
 }
 
 static char	**init_tab(char **argv, int argc)
@@ -107,7 +107,7 @@ t_stack	*init_stack(char **argv, int argc)
 
 void	free_stack(t_stack *s)
 {
-	t_stack *dummy;
+	t_stack	*dummy;
 
 	while (s)
 	{

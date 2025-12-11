@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:36:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/11 00:19:06 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/11 01:11:57 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int	check_list(char *list)
 	char	**elements;
 	int		i;
 
-	elements = ft_split(list, ' ');
+	if (ft_strchr(list, '\n'))
+		elements = ft_split(list, '\n');
+	else
+		elements = ft_split(list, ' ');
 	if (!elements)
 		return (FAILURE);
 	if (check_duplicate(elements) == FAILURE)
@@ -99,17 +102,17 @@ void	check_args(int argc, char **argv)
 		error();
 	is_mode = check_modes(argc, argv);
 	if (is_mode == FAILURE
-		|| (check_duplicate(&argv[1]) == FAILURE && is_mode == FALSE))
+		|| (check_duplicate(&argv[1]) == FAILURE))
 		error();
 	i = 0;
+	if (ft_strncmp(argv[argc - 1], "--", 2) == 0)
+		error();
 	while (++i < argc)
 	{
 		if (ft_strncmp(argv[i], "--", 2) != 0)
 		{
 			list = argv[i];
 			if (check_list(argv[i]) == FAILURE)
-				error();
-			if (is_mode == TRUE && i + 1 < argc)
 				error();
 		}
 	}
