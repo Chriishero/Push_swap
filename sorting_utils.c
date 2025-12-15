@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 10:01:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/15 23:29:02 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/16 00:48:00 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	find_min_index(t_stack *a)
 	return (min_idx);
 }
 
-t_monitoring	selection_sorting_a(t_stack **a, t_stack **b, t_monitoring m)
+t_monitoring	selection_sorting_a(t_stack **a, t_stack **b,
+	int (*find_index)(t_stack *), t_monitoring m)
 {
 	int				size;
 	int				idx;
@@ -69,7 +70,7 @@ t_monitoring	selection_sorting_a(t_stack **a, t_stack **b, t_monitoring m)
 	while (*a)
 	{
 		size = stack_size(*a);
-		idx = find_max_index(*a);
+		idx = find_index(*a);
 		if (idx == FAILURE)
 			break ;
 		if (idx <= size / 2)
@@ -86,7 +87,8 @@ t_monitoring	selection_sorting_a(t_stack **a, t_stack **b, t_monitoring m)
 	return (m);
 }
 
-t_monitoring	selection_sorting_b(t_stack **b, t_stack **a, t_monitoring m)
+t_monitoring	selection_sorting_b(t_stack **b, t_stack **a,
+	int (*find_index)(t_stack *), t_monitoring m)
 {
 	int				size;
 	int				idx;
@@ -95,7 +97,7 @@ t_monitoring	selection_sorting_b(t_stack **b, t_stack **a, t_monitoring m)
 	while (*b)
 	{
 		size = stack_size(*b);
-		idx = find_max_index(*b);
+		idx = find_index(*b);
 		if (idx == FAILURE)
 			break ;
 		if (idx <= size / 2)

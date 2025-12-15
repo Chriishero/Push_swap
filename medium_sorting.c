@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:51:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/15 23:27:37 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/16 00:45:07 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,5 @@ t_monitoring	medium_sorting(t_stack **a, t_stack **b, t_monitoring m)
 			m.n_pb += do_p(a, b, 'b');
 		}
 	}
-	return (free(indexs), selection_sorting_b(b, a, m));
+	return (free(indexs), selection_sorting_b(b, a, &find_max_index, m));
 }

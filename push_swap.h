@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:52:37 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/15 22:07:38 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/16 00:47:55 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ int				isbenchmark_flag(char **argv, int argc);
 // Utils
 int				find_max_index(t_stack *a);
 int				find_min_index(t_stack *a);
-t_monitoring	selection_sorting_a(t_stack **a, t_stack **b, t_monitoring m);
-t_monitoring	selection_sorting_b(t_stack **b, t_stack **a, t_monitoring m);
+t_monitoring	selection_sorting_a(t_stack **a, t_stack **b,
+					int (*find_index)(t_stack *), t_monitoring m);
+t_monitoring	selection_sorting_b(t_stack **b, t_stack **a,
+					int (*find_index)(t_stack *), t_monitoring m);
 // Sorting algo
 t_monitoring	simple_sorting(t_stack **a, t_stack **b, t_monitoring m);
 t_monitoring	medium_sorting(t_stack **a, t_stack **b, t_monitoring m);

@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:50:46 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/15 23:45:54 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/16 00:46:32 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
+	if (argc == 1)
+		return (0);
 	check_args(argc, argv);
 	a = init_stack(argv, argc);
 	b = NULL;
