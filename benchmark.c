@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 09:17:26 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/10 22:50:31 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/15 23:56:22 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ t_monitoring	add_monitoring(t_monitoring m1, t_monitoring m2)
 	return (m1);
 }
 
-int	compute_disorder(t_stack *s)
+unsigned long	compute_disorder(t_stack *s)
 {
-	int		mistakes;
-	int		total_pairs;
-	t_stack	*curr;
-	t_stack	*next;
+	unsigned long		mistakes;
+	unsigned long		total_pairs;
+	t_stack				*curr;
+	t_stack				*next;
 
+	if (stack_size(s) == 1)
+		return (0);
 	mistakes = 0;
 	total_pairs = 0;
 	curr = s;
@@ -74,14 +76,14 @@ int	compute_total_ops(t_monitoring m)
 
 void	print_benchmark(t_monitoring m)
 {
-	ft_printf("[bench] disorder:  %d.%d%%\n", m.disorder / 100,
+	ft_printf_fd(2, "[bench] disorder:  %d.%d%%\n", m.disorder / 100,
 		m.disorder % 100);
-	ft_printf("[bench] strategy:  %s / %s\n", m.strategy, m.time_order);
-	ft_printf("[bench] total_ops:  %d\n", compute_total_ops(m));
-	ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
+	ft_printf_fd(2, "[bench] strategy:  %s / %s\n", m.strategy, m.time_order);
+	ft_printf_fd(2, "[bench] total_ops:  %d\n", compute_total_ops(m));
+	ft_printf_fd(2, "[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
 		m.n_sa, m.n_sb, m.n_ss, m.n_pa, m.n_pb);
-	ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d",
+	ft_printf_fd(2, "[bench] ra:  %d  rb:  %d  rr:  %d",
 		m.n_ra, m.n_rb, m.n_rr);
-	ft_printf("  rra:  %d  rrb:  %d  rrr:  %d\n",
+	ft_printf_fd(2, "  rra:  %d  rrb:  %d  rrr:  %d\n",
 		m.n_rra, m.n_rrb, m.n_rrr);
 }

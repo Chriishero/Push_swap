@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 06:38:23 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/21 06:44:54 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/15 23:55:32 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 // Printf
-int		ft_printf(const char *format, ...);
-int		ft_print_c(int c);
-int		ft_print_s(char *s);
-int		ft_print_p(unsigned long p);
-int		ft_print_int(int n);
-int		ft_print_u(unsigned int u);
-int		ft_print_hex(unsigned int x, char c);
-int		ft_printargs(va_list *args, char c);
+int		ft_printf_fd(int fd, const char *format, ...);
+int		ft_print_c(int c, int fd);
+int		ft_print_s(char *s, int fd);
+int		ft_print_p(unsigned long p, int fd);
+int		ft_print_int(int n, int fd);
+int		ft_print_u(unsigned int u, int fd);
+int		ft_print_hex(unsigned int x, char c, int fd);
+int		ft_printargs(va_list *args, char c, int fd);
 char	*ft_reversestr(char *s);
 char	*ft_dectohex_unsigned(unsigned long n, int islower);
 char	*ft_dectohex_signed(long long n, int islower);

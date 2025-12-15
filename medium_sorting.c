@@ -6,23 +6,11 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:51:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/11 10:26:21 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/15 23:27:37 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static t_monitoring	next_value_to_top(t_stack **a, t_monitoring m,
-	int hold_first, int hold_second)
-{
-	if (stack_size(*a) - hold_second + 1 < hold_first)
-		while (stack_size(*a) - ++hold_second > 0)
-			m.n_rra += do_rr(a, 'a');
-	else
-		while (--hold_first > 0)
-			m.n_rra += do_r(a, 'a');
-	return (m);
-}
 
 static int	find_value_in_chunk(t_stack *a, int min, int max, int istop)
 {
@@ -92,8 +80,30 @@ void	replace_content_by_index(t_stack **a, int *indexs)
 	}
 }
 
-t_monitoring	medium_sorting(t_stack **a, t_stack **b, t_monitoring m)
+static t_monitoring	next_value_to_top(t_stack **a, t_monitoring m,
+	int hold_first, int hold_second)
+{
+	if (stack_size(*a) - hold_second < hold_first)
+	{
+		while (stack_size(*a) - hold_second > 0)
+		{
+			m.n_rra += do_rr(a, 'a');
+			hold_second++;
+		}
+	}
+	else
+	{
+		while (hold_first > 0)
+		{
+			m.n_rra += do_r(a, 'a');
+			hold_first--;
+		}
+	}
+	return (m);
+}
+
 // chunks sorting
+t_monitoring	medium_sorting(t_stack **a, t_stack **b, t_monitoring m)
 {
 	int	*indexs;
 	int	n_chunks;
@@ -108,16 +118,16 @@ t_monitoring	medium_sorting(t_stack **a, t_stack **b, t_monitoring m)
 	while (curr_chunk < n_chunks)
 	{
 		hold_first = find_value_in_chunk(*a, n_chunks * curr_chunk,
-				n_chunks * curr_chunk + n_chunks, TRUE) + 1;
-		if (hold_first - 1 == FAILURE)
+				n_chunks * curr_chunk + n_chunks, TRUE);
+		if (hold_first == FAILURE)
 			curr_chunk++;
 		else
 		{
 			hold_second = find_value_in_chunk(*a, n_chunks * curr_chunk,
-					n_chunks * curr_chunk + n_chunks, FALSE) - 1;
+					n_chunks * curr_chunk + n_chunks, FALSE);
 			m = next_value_to_top(a, m, hold_first, hold_second);
 			m.n_pb += do_p(a, b, 'b');
 		}
 	}
-	return (free(indexs), selection_sorting(a, b, m));
+	return (free(indexs), selection_sorting_b(b, a, m));
 }

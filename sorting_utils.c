@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 10:01:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/11 10:21:00 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/15 23:29:02 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,33 @@ int	find_min_index(t_stack *a)
 	return (min_idx);
 }
 
-t_monitoring	selection_sorting(t_stack **a, t_stack **b, t_monitoring m)
+t_monitoring	selection_sorting_a(t_stack **a, t_stack **b, t_monitoring m)
+{
+	int				size;
+	int				idx;
+	int				moves;
+
+	while (*a)
+	{
+		size = stack_size(*a);
+		idx = find_max_index(*a);
+		if (idx == FAILURE)
+			break ;
+		if (idx <= size / 2)
+			while (idx-- > 0)
+				m.n_ra += do_r(a, 'a');
+		else
+		{
+			moves = size - idx;
+			while (moves-- > 0)
+				m.n_rra += do_rr(a, 'a');
+		}
+		m.n_pb += do_p(a, b, 'b');
+	}
+	return (m);
+}
+
+t_monitoring	selection_sorting_b(t_stack **b, t_stack **a, t_monitoring m)
 {
 	int				size;
 	int				idx;

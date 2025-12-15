@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 07:54:44 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/09 07:58:40 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/15 23:58:26 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	reverse_rotate_ss(t_stack **a, t_stack **b)
 		return (0);
 	reverse_rotate(a);
 	reverse_rotate(b);
-	return (ft_printf("rrr\n"), 1);
+	return (ft_printf_fd(1, "rrr\n"), 1);
 }
 
 int	do_rr(t_stack **s, char c)
 {
 	if (c == 'a' || c == 'b')
-		ft_printf("rr%c\n", c);
+		ft_printf_fd(1, "rr%c\n", c);
 	return (reverse_rotate(s));
 }

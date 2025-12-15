@@ -6,14 +6,14 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 07:50:39 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/21 06:45:52 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/15 23:52:42 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_print_c(int c)
+int	ft_print_c(int c, int fd)
 {
-	ft_putchar_fd(c, 1);
+	ft_putchar_fd(c, fd);
 	return (1);
 }

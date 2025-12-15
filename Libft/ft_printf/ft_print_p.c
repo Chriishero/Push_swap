@@ -6,13 +6,13 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 08:12:04 by cvillene          #+#    #+#             */
-/*   Updated: 2025/11/21 06:45:54 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/15 23:53:13 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_print_p(unsigned long p)
+int	ft_print_p(unsigned long p, int fd)
 {
 	char	*address;
 	char	*hex;
@@ -24,7 +24,7 @@ int	ft_print_p(unsigned long p)
 		address = "(nil)";
 	else
 		address = ft_strjoin("0x", hex);
-	ft_putstr_fd(address, 1);
+	ft_putstr_fd(address, fd);
 	address_len = ft_strlen(address);
 	if (p != 0)
 		free(address);
