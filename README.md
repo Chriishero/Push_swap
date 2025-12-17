@@ -6,7 +6,7 @@ Description:
     The push_swap program output all the operations using to sort the stack, then a benchmark (only if specified) including : disorder of the stack, strategy and time order, total count of the operations, count of each operations.
 
 Instructions:  
-&nbsp;&nbsp;&nbsp;&nbsp;- Utilisation of the push_swap (* for mandatory arguments):  
+	- Utilisation of the push_swap (* for mandatory arguments):  
         make  
         ./push_swap --strategy --bench [*nbrs]  
     - Specified parameters is optionnal but can include:  
