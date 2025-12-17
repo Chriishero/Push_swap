@@ -1,6 +1,6 @@
-This project has been created at part of the 42 curriculum by cvillene[, ejulien].
+This project has been created at part of the 42 curriculum by <cvillene>[, <ejulien>].
 
-Description:
+Description:\n
 	This project aims to sort a stack using two bases stacks (a and b) and a specific list of allowed operations. There are three differents algorithms with each their own time order : Simple (O(n²)), Medium (O(nsqrt(n))) and Complex (O(nlog(n))).
 	There also is the possibility to let the program finds the adequate algorithm according to the disorder of the stack to sort.
 	The push_swap program output all the operations using to sort the stack, then a benchmark (only if specified) including : disorder of the stack, strategy and time order, total count of the operations, count of each operations.
