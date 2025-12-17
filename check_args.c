@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 07:36:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/16 00:05:16 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 23:32:28 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ int	check_modes(int argc, char **argv)
 	isstrat = FALSE;
 	while (--argc > 0)
 	{
-		if (ft_strncmp(argv[argc], "--simple", 9) == 0 && isstrat == FALSE)
+		if (are_strs_equals(argv[argc], "--simple") && isstrat == FALSE)
 			isstrat = TRUE;
-		else if (ft_strncmp(argv[argc], "--medium", 9) == 0 && isstrat == FALSE)
+		else if (are_strs_equals(argv[argc], "--medium") && isstrat == FALSE)
 			isstrat = TRUE;
-		else if (ft_strncmp(argv[argc], "--complex", 10) == 0
+		else if (are_strs_equals(argv[argc], "--complex")
 			&& isstrat == FALSE)
 			isstrat = TRUE;
-		else if (ft_strncmp(argv[argc], "--adaptive", 10) == 0
+		else if (are_strs_equals(argv[argc], "--adaptive")
 			&& isstrat == FALSE)
 			isstrat = TRUE;
-		else if (ft_strncmp(argv[argc], "--bench", 8) == 0 && isbench == FALSE)
+		else if (are_strs_equals(argv[argc], "--bench") && isbench == FALSE)
 			isbench = TRUE;
 		else if (ft_strncmp(argv[argc], "--", 2) == 0)
 			return (FAILURE);

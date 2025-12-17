@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 08:57:36 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/10 23:55:55 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 23:00:30 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	stack_size(t_stack *s)
 	return (i);
 }
 
-int	ft_sqrt(int n)
+int	ft_ceil_sqrt(int n)
 {
 	int	res;
 

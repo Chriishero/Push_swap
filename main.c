@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:50:46 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/17 07:42:33 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 23:34:08 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,17 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 
 	if (argc == 1)
-		return (0);
+		return (1);
+	else if (isbenchmark_flag(argv, argc) && get_strategy(argv, argc)
+		&& argc == 3)
+		return (1);
+	else if ((isbenchmark_flag(argv, argc) || get_strategy(argv, argc))
+		&& argc == 2)
+		return (1);
 	check_args(argc, argv);
 	a = init_stack(argv, argc);
 	b = NULL;
-	push_swap(&a, &b, "--simple", isbenchmark_flag(argv, argc));
+	push_swap(&a, &b, get_strategy(argv, argc), isbenchmark_flag(argv, argc));
 	free_stack(a);
 	return (0);
 }

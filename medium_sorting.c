@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:51:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/17 07:02:40 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 23:05:01 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,12 @@ t_monitoring	medium_sorting(t_stack **a, t_stack **b, t_monitoring m)
 
 	indexs = value_to_index(*a);
 	replace_content_by_index(a, indexs);
-	n_chunks = ft_sqrt(stack_size(*a));
+	n_chunks = ft_ceil_sqrt(stack_size(*a));
 	curr_chunk = 0;
 	while (curr_chunk < n_chunks)
 	{
 		hold_first = find_value_in_chunk(*a, n_chunks * curr_chunk,
-				n_chunks * curr_chunk + n_chunks, TRUE);
+				(n_chunks) * curr_chunk + n_chunks, TRUE);
 		if (hold_first == FAILURE)
 			curr_chunk++;
 		else

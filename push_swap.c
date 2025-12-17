@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:59:55 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/16 23:47:51 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 23:30:08 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ char	*get_strategy(char **argv, int argc)
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_strncmp(argv[i], "--", 2) == 0)
-			if (ft_strncmp(argv[i], "--bench", 10) != 0)
-				return (argv[i]);
+		if (are_strs_equals(argv[i], "--simple") == TRUE
+			|| are_strs_equals(argv[i], "--medium") == TRUE
+			|| are_strs_equals(argv[i], "--complex") == TRUE
+			|| are_strs_equals(argv[i], "--adaptive") == TRUE)
+			return (argv[i]);
 		i++;
 	}
 	return (NULL);
@@ -52,7 +54,7 @@ int	isbenchmark_flag(char **argv, int argc)
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_strncmp(argv[i], "--bench", 10) == 0)
+		if (are_strs_equals(argv[i], "--bench") == TRUE)
 			return (TRUE);
 		i++;
 	}
@@ -84,13 +86,13 @@ void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 	m.time_order = get_time_order(m.strategy, m.disorder);
 	if (m.disorder > 0)
 	{
-		if (!strategy || ft_strncmp(strategy, "--adaptive", 13) == 0)
+		if (!strategy || are_strs_equals(strategy, "--adaptive") == TRUE)
 			m = adaptive_sorting(a, b, m);
-		else if (ft_strncmp(strategy, "--simple", 10) == 0)
+		else if (are_strs_equals(strategy, "--simple") == TRUE)
 			m = simple_sorting(a, b, m);
-		else if (ft_strncmp(strategy, "--medium", 9) == 0)
+		else if (are_strs_equals(strategy, "--medium") == TRUE)
 			m = medium_sorting(a, b, m);
-		else if (ft_strncmp(strategy, "--complex", 9) == 0)
+		else if (are_strs_equals(strategy, "--complex") == TRUE)
 			m = complex_sorting(a, b, m);
 	}
 	if (isbenchmark == TRUE)

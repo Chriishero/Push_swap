@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sorting.c                                   :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 07:49:54 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/17 22:09:55 by cvillene         ###   ########.fr       */
+/*   Created: 2025/12/17 23:22:23 by cvillene          #+#    #+#             */
+/*   Updated: 2025/12/17 23:34:09 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "utils.h"
 
-// selection sorting
-t_monitoring	simple_sorting(t_stack **a, t_stack **b, t_monitoring m)
+int	are_strs_equals(char *str1, char *str2)
 {
-	m = selection_sorting_a(a, b, &find_min_index, m);
-	while (*b)
-		m.n_pa += do_p(b, a, 'a');
-	return (m);
+	int	size;
+
+	if (!str1 && !str2)
+		return (TRUE);
+	else if (!str1 || !str2)
+		return (FALSE);
+	if (ft_strlen(str1) != ft_strlen(str2))
+		return (FALSE);
+	size = ft_strlen(str1);
+	if (ft_strncmp(str1, str2, size) != 0)
+		return (FALSE);
+	return (TRUE);
 }

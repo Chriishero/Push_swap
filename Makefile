@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = 	main.c utils.c \
+SRCS = 	main.c utils.c utils2.c \
 		check_args.c check_args2.c \
 		stack.c swap_stack.c push_stack.c rotate_stack.c reverse_rotate_stack.c \
 		benchmark.c \
