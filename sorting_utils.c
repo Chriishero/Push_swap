@@ -6,11 +6,27 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 10:01:19 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/16 00:48:00 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 06:51:55 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	find_max_element(t_stack *s)
+{
+	int	max;
+
+	if (!s)
+		return (FAILURE);
+	max = INT_MIN;
+	while (s)
+	{
+		if (s->content > max)
+			max = s->content;
+		s = s->next;
+	}
+	return (max);
+}
 
 int	find_max_index(t_stack *a)
 {

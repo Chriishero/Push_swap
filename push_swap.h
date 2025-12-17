@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 06:52:37 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/16 00:47:55 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 00:22:04 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char			*get_strategy(char **argv, int argc);
 char			*get_time_order(char *strategy, int disorder);
 int				isbenchmark_flag(char **argv, int argc);
 // Utils
+int				find_max_element(t_stack *s);
 int				find_max_index(t_stack *a);
 int				find_min_index(t_stack *a);
 t_monitoring	selection_sorting_a(t_stack **a, t_stack **b,

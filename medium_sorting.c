@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 07:51:20 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/16 00:45:07 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/17 07:02:40 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	*value_to_index(t_stack *a)
 	int		i;
 	int		index;
 
-	tabs = (int *)malloc(sizeof(int) * (stack_size(a) + 1));
+	tabs = (int *)malloc(sizeof(int) * (stack_size(a)));
 	if (!tabs)
 		return (NULL);
 	curr = a;
@@ -65,7 +65,7 @@ static int	*value_to_index(t_stack *a)
 	return (tabs);
 }
 
-void	replace_content_by_index(t_stack **a, int *indexs)
+static void	replace_content_by_index(t_stack **a, int *indexs)
 {
 	t_stack	*curr;
 	int		i;
@@ -95,7 +95,7 @@ static t_monitoring	next_value_to_top(t_stack **a, t_monitoring m,
 	{
 		while (hold_first > 0)
 		{
-			m.n_rra += do_r(a, 'a');
+			m.n_ra += do_r(a, 'a');
 			hold_first--;
 		}
 	}

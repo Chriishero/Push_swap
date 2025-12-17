@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 09:17:26 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/16 00:39:17 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/16 23:48:39 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	compute_total_ops(t_monitoring m)
 
 	total_ops = 0;
 	total_ops += m.n_pa;
-	total_ops += m.n_pa;
+	total_ops += m.n_pb;
 	total_ops += m.n_ra;
 	total_ops += m.n_rb;
 	total_ops += m.n_rr;
