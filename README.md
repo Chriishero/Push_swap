@@ -20,7 +20,7 @@ Instructions:
 
 Usage Examples:  
 	- Allowed commands:  
-		./push_swap 1 2 3 4 6 5  
+'\t''\t'./push_swap 1 2 3 4 6 5  
 		./push_swap --simple "1 2 3 4 6 5"  
 		./push_swap --bench 1 "2 3 4" 6 5  
 		./push_swap --simple --bench -1 "+2 3 4" 6 5  
