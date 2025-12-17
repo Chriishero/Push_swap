@@ -19,8 +19,8 @@ Instructions:
 	The arguments cannot contains anything other than the strategy, bench and numbers. If that is not the case, 'Error' will be returned. If there are no arguments, nothing will be returned.  
 
 Usage Examples:  
-	- Allowed commands:  
-'\t''\t'./push_swap 1 2 3 4 6 5  
+	&nbsp;- Allowed commands:  
+		./push_swap 1 2 3 4 6 5  
 		./push_swap --simple "1 2 3 4 6 5"  
 		./push_swap --bench 1 "2 3 4" 6 5  
 		./push_swap --simple --bench -1 "+2 3 4" 6 5  
