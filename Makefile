@@ -4,7 +4,7 @@ SRCS = 	main.c utils.c utils2.c \
 		check_args.c check_args2.c \
 		stack.c swap_stack.c push_stack.c rotate_stack.c reverse_rotate_stack.c \
 		benchmark.c \
-		sorting_utils.c medium_sorting.c simple_sorting.c complex_sorting.c \
+		sorting_utils.c low_n_sorting.c adaptive_sorting.c simple_sorting.c medium_sorting.c complex_sorting.c \
 		push_swap.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap

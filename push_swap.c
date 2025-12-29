@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:59:55 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/17 23:30:08 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/29 22:23:34 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,17 @@ int	isbenchmark_flag(char **argv, int argc)
 	return (FALSE);
 }
 
-t_monitoring	adaptive_sorting(t_stack **a, t_stack **b, t_monitoring m)
+void	choose_sorting(t_stack **a, t_stack **b,
+	char *strategy, t_monitoring *m)
 {
-	if (m.disorder < 0.2 * 10000)
-		m = simple_sorting(a, b, m);
-	else if (m.disorder >= 0.2 * 10000 && m.disorder < 0.5 * 10000)
-		m = medium_sorting(a, b, m);
-	else if (m.disorder >= 0.5 * 10000)
-		m = complex_sorting(a, b, m);
-	return (m);
+	if (!strategy || are_strs_equals(strategy, "--adaptive") == TRUE)
+		*m = adaptive_sorting(a, b, *m);
+	else if (are_strs_equals(strategy, "--simple") == TRUE)
+		*m = simple_sorting(a, b, *m);
+	else if (are_strs_equals(strategy, "--medium") == TRUE)
+		*m = medium_sorting(a, b, *m);
+	else if (are_strs_equals(strategy, "--complex") == TRUE)
+		*m = complex_sorting(a, b, *m);
 }
 
 void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
@@ -83,17 +85,17 @@ void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 	else
 		m.strategy = toupper_first_letter(ft_substr(strategy, 2,
 					ft_strlen(strategy) - 2));
-	m.time_order = get_time_order(m.strategy, m.disorder);
 	if (m.disorder > 0)
 	{
-		if (!strategy || are_strs_equals(strategy, "--adaptive") == TRUE)
-			m = adaptive_sorting(a, b, m);
-		else if (are_strs_equals(strategy, "--simple") == TRUE)
-			m = simple_sorting(a, b, m);
-		else if (are_strs_equals(strategy, "--medium") == TRUE)
-			m = medium_sorting(a, b, m);
-		else if (are_strs_equals(strategy, "--complex") == TRUE)
-			m = complex_sorting(a, b, m);
+		m.time_order = ft_strdup("O(1)");
+		if (stack_size(*a) <= 3)
+			m = n_3_sorting(a, m);
+		else
+		{
+			choose_sorting(a, b, strategy, &m);
+			free(m.time_order);
+			m.time_order = get_time_order(m.strategy, m.disorder);
+		}
 	}
 	if (isbenchmark == TRUE)
 		print_benchmark(m);
