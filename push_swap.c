@@ -6,7 +6,7 @@
 /*   By: cvillene <cvillene@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 08:59:55 by cvillene          #+#    #+#             */
-/*   Updated: 2025/12/29 22:23:34 by cvillene         ###   ########.fr       */
+/*   Updated: 2025/12/29 22:54:52 by cvillene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	isbenchmark_flag(char **argv, int argc)
 void	choose_sorting(t_stack **a, t_stack **b,
 	char *strategy, t_monitoring *m)
 {
+	free((*m).time_order);
+	(*m).time_order = get_time_order((*m).strategy, (*m).disorder);
 	if (!strategy || are_strs_equals(strategy, "--adaptive") == TRUE)
 		*m = adaptive_sorting(a, b, *m);
 	else if (are_strs_equals(strategy, "--simple") == TRUE)
@@ -90,12 +92,10 @@ void	push_swap(t_stack **a, t_stack **b, char *strategy, int isbenchmark)
 		m.time_order = ft_strdup("O(1)");
 		if (stack_size(*a) <= 3)
 			m = n_3_sorting(a, m);
+		else if (stack_size(*a) <= 5)
+			m = n_5_sorting(a, b, m);
 		else
-		{
 			choose_sorting(a, b, strategy, &m);
-			free(m.time_order);
-			m.time_order = get_time_order(m.strategy, m.disorder);
-		}
 	}
 	if (isbenchmark == TRUE)
 		print_benchmark(m);
