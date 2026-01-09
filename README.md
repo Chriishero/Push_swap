@@ -31,6 +31,10 @@ Usage Examples:
         ./push_swap 1 2 3 --simple 4 6 5  
         ./push_swap 1 2 3 a 4 5 6  
 
+Resources:
+	- A lot of thinking
+	- AI helped understand concepts
+
 Algorithms:  
     - Simple algorithm - O(n²) : Selection sorting  
         This algorithm search the minimum value of the first stack and push it in the second stack. When the first stack is empty, everything is push back in.
